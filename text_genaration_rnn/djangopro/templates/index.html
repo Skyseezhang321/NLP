@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1 style="background-color: antiquewhite;color: black">文本生成系统!</h1>
+    <h2>输入文章主题：</h2>
+    <form action="/index/" method="post">
+        {% csrf_token %}   <!--加入这行 -->
+        请输入关键字：<input type="text" name="text_gen" /><br />
+        <input type="submit" value="生成" />
+    </form>
+
+    <h1>用户展示：</h1>
+        <table border="1">
+            <thead>
+                <tr>生成文本</tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.text_gen_done }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
